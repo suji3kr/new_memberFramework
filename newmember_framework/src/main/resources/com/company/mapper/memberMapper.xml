@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Member">
+    <insert id="save" parameterType="member">
+        insert into member_table(memberEmail, memberPassword, memberName, memberAge, memberMobile)
+        values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberAge}, #{memberMobile})
+    </insert>
+    
+    
+    <select id="login" parameterType="member" resultType="member">
+    	select * from member_table where memberEmail=#{memberEmail} and memberPassword=#{memberPassword}
+    </select>
+    
+    <select id="findAll" resultType="member">
+        select * from member_table
+    </select>
+    
+     <select id="findById" parameterType="Long" resultType="member">
+        select * from member_table where id=#{id}
+    </select>
+    
+</mapper>
+
+<!-- 테이블 목록 넣는 폴더를 mapper에 따로 쓰고 
+   그 내용의 CRUD 를 config에 넣음    그래서 id 와 타입이 mapper에 있어야 함 ...!! -->
+<!-- 마이sql 인서트문은 #{} 외부에서 들어오는 파라메드 -->
+
+
+
+<!-- 로그인 후  에러나면   mapper login  query 다시 확인  -->
