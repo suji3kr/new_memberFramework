@@ -15,8 +15,8 @@
 	}
 </script>
 <body>
-<h2>👑 ${sessionScope.loginEmail}님 환영합니다📲 </h2>
-<button onclick="update()">내 정보 수정하기</button>
-<button onclick="logout()">로그아웃</button>
+<h2> ${sessionScope.loginEmail}님 환영합니다 🪐 </h2>
+<button onclick="update()">정보 수정하기 ✒</button>
+<button onclick="logout()">로그아웃 📲</button>
 </body>
 </html>

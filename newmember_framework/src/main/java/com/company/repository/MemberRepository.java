@@ -1,34 +1,24 @@
 package com.company.repository;
 
 import java.util.List;
-
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.stereotype.Repository;
 import com.company.dto.MemberDTO;
-import lombok.RequiredArgsConstructor;
 
-@Repository
-@RequiredArgsConstructor
-public class MemberRepository {
+
+
+public interface MemberRepository {
 	
-	private final SqlSessionTemplate sql; 
+	int save(MemberDTO memberDTO);
 	
-	public int save(MemberDTO memberDTO) {
-		System.out.println("memberDTO = " + memberDTO);
-		return sql.insert("Member.save", memberDTO);
-	}
+	MemberDTO login(MemberDTO memberDTO);
 
-	public MemberDTO login(MemberDTO memberDTO) {
-		return sql.selectOne("Member.login", memberDTO);
-	}
+	List<MemberDTO> findAll();
 
-	public List<MemberDTO> findAll() {
-		
-		return sql.selectList("Member.findAll");
-	}
+	MemberDTO findById(Long id);
 
-	public MemberDTO findById(Long id) {
-		return sql.selectOne("Member.findById", id);
-	}
+	void delete(Long id);
+
+	MemberDTO findByMemberEmail(String loginEmail);
+	
+	int update(MemberDTO memberDTO);
 
 }
